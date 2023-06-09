@@ -4,9 +4,15 @@ if (navigator.geolocation) {
   console.log('Geolocation is not supported by this browser.')
 }
 
+const map = L.map('map').setView([51.505, -0.09], 13)
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
+
 function showPosition(position) {
   const latitude = position.coords.latitude
   const longitude = position.coords.longitude
+  map.setView([latitude, longitude], 13)
+  L.marker([latitude, longitude]).addTo(map)
 
   const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
 
@@ -15,12 +21,14 @@ function showPosition(position) {
     .then(data => {
       // Extract the country ,city and road information from the response
       const country = data.address.country
+      const state = data.address.state
       const city =
         data.address.city || data.address.town || data.address.village
       const road = data.address.road
 
       // Update the values in the display box
       document.getElementById('country').textContent = country
+      document.getElementById('state').textContent = state
       document.getElementById('city').textContent = city
       document.getElementById('road').textContent = road
     })

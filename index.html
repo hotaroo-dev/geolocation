@@ -4,6 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="./index.js" defer></script>
   </head>
   <body>
@@ -21,6 +32,10 @@
         <span class="value" id="country"></span>
       </div>
       <div class="info-item">
+        <span class="label">State:</span>
+        <span class="value" id="state"></span>
+      </div>
+      <div class="info-item">
         <span class="label">City:</span>
         <span class="value" id="city"></span>
       </div>
@@ -29,5 +44,6 @@
         <span class="value" id="road"></span>
       </div>
     </div>
+    <div id="map"></div>
   </body>
 </html>
